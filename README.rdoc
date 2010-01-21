@@ -14,4 +14,8 @@ the jslint documentation (http://www.jslint.com/lint.html) for allowed options.
 
 == Copyright
 
-Copyright (c) 2010 Steven Parkes. See LICENSE for details.
+jslintrb Copyright (c) 2010 Steven Parkes. See LICENSE for details.
+
+jslint Copyright (c) 2002 Douglas Crockford. See lib/jslintrb/fulljslint.js for details.
+
+json2 is in the public domain. See lib/jslintrb/json2.js for details.
