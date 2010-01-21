@@ -10,7 +10,7 @@ jslintrb <javascript files to be checked>
 
 You can provide a .jslinrbrc file in the directory from which the
 command is run to set jslint options. The file is JSON-formated. See
-the jslint documentation [http://www.jslint.com/lint.html](http://www.jslint.com/lint.html) for allowed options.
+the jslint documentation (http://www.jslint.com/lint.html) for allowed options.
 
 == Copyright
 
