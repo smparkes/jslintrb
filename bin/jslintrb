@@ -10,7 +10,8 @@ ENV["JSLINTRB_JS_PATH"] =
 
 args = [ "env",
          "JSLINT_FILES=#{ARGV.join(':')}",
-        "johnson",
+         "JOHNSON_RUNTIME=tracemonkey",
+         "johnson",
          File.join(JSLINT_DIR,"fulljslint.js"),
          File.join(JSLINT_DIR,"json2.js"),
          File.join(JSLINT_DIR,"jslintrb.js") ]
