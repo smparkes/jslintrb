@@ -8,14 +8,21 @@ Ruby gem to interpret the JSLint javascript.
 
 jslintrb <javascript files to be checked>
 
-You can provide a .jslinrbrc file in the directory from which the
-command is run to set jslint options. The file is JSON-formated. See
-the jslint documentation (http://www.jslint.com/lint.html) for allowed options.
+You can provide .jslinrbrc files in the directory from which the
+command is run, the directory in which any file is found, and in any
+parent of that directory, to set jslint options. They are processed
+default first, then current directory, then ancestor directories, then
+the immediate parent. For example, I have a .jslintrbrc file in my
+top-level project directory that sets options for my project, then one
+in my spec directory (like a test directory) which adds the globals
+that exist for the tests but not for the core application code.
+
+ The file is JSON-formatted. See the
+jslint documentation (http://www.jslint.com/lint.html) for allowed
+options.
 
 == Copyright
 
-jslintrb Copyright (c) 2010 Steven Parkes. See LICENSE for details.
-
-jslint Copyright (c) 2002 Douglas Crockford. See lib/jslintrb/fulljslint.js for details.
-
+jslintrb copyright (c) 2010 Steven Parkes. See LICENSE for details.
+jslint copyright (c) 2002 Douglas Crockford. See lib/jslintrb/fulljslint.js for details.
 json2 is in the public domain. See lib/jslintrb/json2.js for details.
