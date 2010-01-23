@@ -17,9 +17,13 @@ top-level project directory that sets options for my project, then one
 in my spec directory (like a test directory) which adds the globals
 that exist for the tests but not for the core application code.
 
- The file is JSON-formatted. See the
+The file is JSON-formatted. See the
 jslint documentation (http://www.jslint.com/lint.html) for allowed
 options.
+
+jslintrb adds support for JavaScript with statements. They are parsed
+but produce a warning. The "withstmt" option will suppress that
+warning. Note that this does not endorse the use of with statements.
 
 == Copyright
 
