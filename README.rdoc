@@ -23,7 +23,8 @@ options.
 
 jslintrb adds support for JavaScript with statements. They are parsed
 but produce a warning. The "withstmt" option will suppress that
-warning. Note that this does not endorse the use of with statements.
+warning. Note that this does not imply and endorsement of the use of
+with statements.
 
 == Copyright
 
