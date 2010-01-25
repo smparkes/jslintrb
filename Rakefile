@@ -10,7 +10,7 @@ begin
     gem.email = "smparkes@smparkes.net"
     gem.homepage = "http://github.com/smparkes/jslintrb"
     gem.authors = ["Steven Parkes"]
-    gem.add_runtime_dependency "smparkes-johnson", ">= 1.1.2.6"
+    gem.add_runtime_dependency "johnson", ">= 2.0.0.pre0"
     # gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.files = FileList["[A-Z]*.*", "{bin,generators,doc,lib,test,spec}/**/*"]
