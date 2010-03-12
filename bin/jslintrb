@@ -13,7 +13,6 @@ args = [ "env",
          "JOHNSON_RUNTIME=tracemonkey",
          "johnson",
          File.join(JSLINT_DIR,"fulljslint.js"),
-         File.join(JSLINT_DIR,"json2.js"),
          File.join(JSLINT_DIR,"jslintrb.js") ]
 
 cmd = args.join(" ")

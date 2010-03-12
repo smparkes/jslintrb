@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+
+module JSLintRb; end
+class JSLintRb::Plugin < Wake::Plugin
+  extend Wake::Plugin::Class
+
+  default :regexp => /\.js$/
+
+  def watcher
+    default = super
+    lambda do |path, graph|
+      if node = default.call( path, graph )
+        create graph, Node::Virtual.new( node, cls.default[:options][:virtual] ), :from => node, :plugin => self
+      end
+    end
+  end
+
+  def fire_all
+    lambda do |nodes|
+      cmd = "jslintrb #{nodes.map { |node| node.primary_dependence.path }.uniq.join(' ')}"
+      puts cmd
+      system cmd
+    end
+  end
+
+end
