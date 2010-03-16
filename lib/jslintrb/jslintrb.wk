@@ -1,10 +1,17 @@
 # -*- mode: ruby -*-
 
+require 'json'
+
 module JSLintRb; end
 class JSLintRb::Plugin < Wake::Plugin
   extend Wake::Plugin::Class
 
   default :regexp => /\.js$/
+
+  def out_of_date? node, flag
+    return true if super
+    return flag
+  end
 
   def watcher
     default = super
@@ -17,9 +24,28 @@ class JSLintRb::Plugin < Wake::Plugin
 
   def fire_all
     lambda do |nodes|
+      succeeded = nodes.inject({}) { |hash, node| hash[node] = true; hash }
       cmd = "jslintrb #{nodes.map { |node| node.primary_dependence.path }.uniq.join(' ')}"
       puts cmd
-      system cmd
+      status = open("|"+cmd) do |f|
+        f.each do |line|
+          $stderr.puts line
+          m = /^([^ ]+) line \d+ character \d+:/.match(line)
+          path = m[1] if m
+          if path
+            array = nodes.select { |node| node.primary_dependence.path == path }
+            succeeded[array[0]] = false
+          end
+        end
+      end
+      succeeded.each do |node, v|
+        FileUtils.mkdir_p Pathname(node.path).dirname
+        open(node.path,"w") do |f|
+          f.truncate 0
+          f.write({:succeded => v}.to_json)
+        end
+      end
+      return status
     end
   end
 
