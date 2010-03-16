@@ -1,0 +1,11 @@
+CHANGELOG.rdoc
+LICENSE
+Manifest.txt
+README.rdoc
+Rakefile
+bin/jslintrb
+lib/jslintrb.rb
+lib/jslintrb/fulljslint.js
+lib/jslintrb/jslintrb.js
+lib/jslintrb/jslintrb.wk
+lib/jslintrb/options.rb
