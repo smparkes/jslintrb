@@ -18,8 +18,8 @@ in my spec directory (like a test directory) which adds the globals
 that exist for the tests but not for the core application code.
 
 The file is JSON-formatted. See the
-jslint documentation (http://www.jslint.com/lint.html) for allowed
-options.
+jslint documentation (http://www.jslint.com/lint.html#options) for allowed
+options and an example at http://github.com/smparkes/env-js/blob/envjsrb/.jslintrbrc.
 
 jslintrb adds support for JavaScript with statements. They are parsed
 but produce a warning. The "withstmt" option will suppress that
