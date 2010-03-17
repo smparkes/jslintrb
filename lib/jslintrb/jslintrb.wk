@@ -8,16 +8,12 @@ class JSLintRb::Plugin < Wake::Plugin
 
   default :regexp => /\.js$/
 
-  def out_of_date? node, flag
-    return true if super
-    return flag
-  end
-
   def watcher
     default = super
     lambda do |path, graph|
       if node = default.call( path, graph )
-        create graph, Node::Virtual.new( node, cls.default[:options][:virtual] ), :from => node, :plugin => self
+        create graph, Node::Virtual.new( graph, node, cls.default[:options][:virtual] ),
+                     :from => node, :plugin => self
       end
     end
   end
@@ -27,7 +23,8 @@ class JSLintRb::Plugin < Wake::Plugin
       succeeded = nodes.inject({}) { |hash, node| hash[node] = true; hash }
       cmd = "jslintrb #{nodes.map { |node| node.primary.path }.uniq.join(' ')}"
       puts cmd
-      status = open("|"+cmd) do |f|
+      now = Time.now();
+      open("|"+cmd) do |f|
         f.each do |line|
           $stderr.puts line
           m = /^([^ ]+) line \d+ character \d+:/.match(line)
@@ -38,14 +35,16 @@ class JSLintRb::Plugin < Wake::Plugin
           end
         end
       end
+      puts "\nFinished in #{Time.now()-now} seconds"
+      # require 'pp'
+      # pp (succeeded.map { |k,v| [ k.path, v ] })
+      success = true
       succeeded.each do |node, v|
-        FileUtils.mkdir_p Pathname(node.path).dirname
-        open(node.path,"w") do |f|
-          f.truncate 0
-          f.write({:succeded => v}.to_json)
-        end
+        node.succeeded = v
+        success &&= v
+        node.save!
       end
-      return status
+      success
     end
   end
 

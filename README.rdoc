@@ -25,6 +25,10 @@ The file is JSON-formatted. See the jslint documentation
 (http://www.jslint.com/lint.html#options) for allowed options and an
 example at http://github.com/smparkes/env-js/blob/envjsrb/.jslintrbrc.
 
+== Differences from upstream
+
+JSLint warns against using new to be evaluated soley for side-effects. jslintrb allows this if you set the "newside" option.
+
 == Copyright
 
 jslintrb copyright (c) 2010 Steven Parkes. See LICENSE for details.
