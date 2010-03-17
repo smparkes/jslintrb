@@ -25,7 +25,7 @@ class JSLintRb::Plugin < Wake::Plugin
   def fire_all
     lambda do |nodes|
       succeeded = nodes.inject({}) { |hash, node| hash[node] = true; hash }
-      cmd = "jslintrb #{nodes.map { |node| node.primary_dependence.path }.uniq.join(' ')}"
+      cmd = "jslintrb #{nodes.map { |node| node.primary.path }.uniq.join(' ')}"
       puts cmd
       status = open("|"+cmd) do |f|
         f.each do |line|
@@ -33,7 +33,7 @@ class JSLintRb::Plugin < Wake::Plugin
           m = /^([^ ]+) line \d+ character \d+:/.match(line)
           path = m[1] if m
           if path
-            array = nodes.select { |node| node.primary_dependence.path == path }
+            array = nodes.select { |node| node.primary.path == path }
             succeeded[array[0]] = false
           end
         end
