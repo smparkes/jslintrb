@@ -1,8 +1,10 @@
+.jslintrbrc
 CHANGELOG.rdoc
 LICENSE
 Manifest.txt
 README.rdoc
 Rakefile
+Wakefile
 bin/jslintrb
 lib/jslintrb.rb
 lib/jslintrb/fulljslint.js
