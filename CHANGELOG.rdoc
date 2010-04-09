@@ -1,3 +1,7 @@
+=== 0.7.0 / 2010-04-09
+
+* add option to allow void
+
 === 0.6.0 / 2010-03-30
 
 * add Nick Galbreath's idea of mangling getter/setter syntax to get through the non-ES5 parser
