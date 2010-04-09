@@ -27,14 +27,21 @@ example at http://github.com/smparkes/env-js/blob/envjsrb/.jslintrbrc.
 
 == Differences from upstream
 
-JSLint warns against using new to be evaluated soley for side-effects. jslintrb allows this if you set the "newside" option.
+JSLint warns against using new to be evaluated soley for
+side-effects. jslintrb allows this if you set the "newside" option.
 
-Upstream doesn't support ECMAScript 5 getters and setters. Nick
-Galbreath (http://blog.client9.com/) had the idea of just using a
-regexp to mangle the common cases for the purposes of jslint until
-upstream suports them. You can do this now in jslintrb by setting the
-"gettersetter" option to true. Note that this option has to be turned
-on in a .jslintrbrc file; it can't be turned on with inline comments.
+JSLint forbids the use void(x). I find this the cleanest/most reliable
+way of generating the undefined value, since the "undefined" variable
+can be defined. The "void" option enables the use of void.
+
+Upstream recently added support for ECMAScript 5 getters and setters
+but this hasn't been integrated yet. (Not sure about the requirements
+for paired getters/setters.) Nick Galbreath (http://blog.client9.com/)
+had the idea of just using a regexp to mangle the common cases for the
+purposes of jslint until upstream suports them. You can do this now in
+jslintrb by setting the "gettersetter" option to true. Note that this
+option has to be turned on in a .jslintrbrc file; it can't be turned
+on with inline comments.
 
 == Copyright
 
