@@ -5,8 +5,7 @@
 == Description
 
 jslintrb is a packaged version of Douglas Crockford's JSLint JavaScript code checker.
- jslintrb uses SpiderMonkey via the Johnson
-Ruby gem to interpret the JSLint javascript.
+jslintrb uses SpiderMonkey via the Johnson Ruby gem to interpret the JSLint javascript.
 
 == Usage
 
